@@ -19,7 +19,15 @@ litters_df = janitor::clean_names(litters_df)
 # this is very useful...
 ```
 
-## look at the dataset
+## Import the FAS Pups using absolute path
+```{r}
+pups_df = read_csv("C:/Users/berns/Desktop/P8105 Data Science I/data_wranging_1/data/FAS_pups.csv")
+
+pups_df = janitor::clean_names(pups_df)
+# this is very useful...
+```
+
+## Look at the dataset
 ```{r}
 litters_df
 
