@@ -13,11 +13,23 @@ This document will show how to import data.
 
 ## Import the FAS Litters CSV
 ```{r}
-litters_df = read_csv("data/FAS_litters.csv")
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv")
 
 litters_df = janitor::clean_names(litters_df)
 # this is very useful...
 ```
+
+# Missing data
+```{r}
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    na = c("NA", " ", ".")
+    )
+```
+
 
 ## Import the FAS Pups using absolute path
 ```{r}
