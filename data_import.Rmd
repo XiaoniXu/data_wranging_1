@@ -3,8 +3,27 @@ title: "Data Import"
 output: github_document
 ---
 
+9/17/2024 The days are getting shorter
+
 ```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
 ```
 
-This document will show hotw to import data.
+This document will show how to import data.
+
+## Import the FAS Litters CSV
+```{r}
+litters_df = read_csv("data/FAS_litters.csv")
+```
+
+## look at the dataset
+```{r}
+litters_df
+
+head(litters_df)
+tail(litters_df, 10)
+```
+
+```{r eval = FALSE}
+view(litters_df)
+```
