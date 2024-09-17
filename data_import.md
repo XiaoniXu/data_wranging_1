@@ -51,6 +51,35 @@ litters_df =
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
+``` r
+litters_df = janitor::clean_names(litters_df)
+
+pull(litters_df, gd0_weight)
+```
+
+    ##  [1] 19.7 27.0 26.0 28.5   NA   NA   NA   NA   NA 28.5 28.0   NA   NA   NA   NA
+    ## [16] 17.0 21.4   NA   NA   NA 28.0 23.5 22.6   NA 21.7 24.4 19.5 24.3 22.6 22.2
+    ## [31] 23.8 22.6 23.8 25.5 23.9 24.5   NA   NA 26.9 27.5 28.5 33.4 21.8 25.4 20.0
+    ## [46] 21.8 25.6 23.5 25.5
+
+What id we code `group` as a factor variable?
+
+``` r
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    na = c("NA", " ", "."),
+    col_types = cols(
+      Group = col_factor()
+    )
+  )
+```
+
+    ## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+    ## e.g.:
+    ##   dat <- vroom(...)
+    ##   problems(dat)
+
 ## Import the FAS Pups using absolute path
 
 ``` r
@@ -79,7 +108,7 @@ litters_df
 
     ## # A tibble: 49 × 8
     ##    Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
-    ##    <chr> <chr>                  <dbl>         <dbl>         <dbl>
+    ##    <fct> <chr>                  <dbl>         <dbl>         <dbl>
     ##  1 Con7  #85                     19.7          34.7            20
     ##  2 Con7  #1/2/95/2               27            42              19
     ##  3 Con7  #5/5/3/83/3-3           26            41.4            19
@@ -100,7 +129,7 @@ head(litters_df)
 
     ## # A tibble: 6 × 8
     ##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
-    ##   <chr> <chr>                  <dbl>         <dbl>         <dbl>
+    ##   <fct> <chr>                  <dbl>         <dbl>         <dbl>
     ## 1 Con7  #85                     19.7          34.7            20
     ## 2 Con7  #1/2/95/2               27            42              19
     ## 3 Con7  #5/5/3/83/3-3           26            41.4            19
@@ -116,7 +145,7 @@ tail(litters_df, 10)
 
     ## # A tibble: 10 × 8
     ##    Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
-    ##    <chr> <chr>                  <dbl>         <dbl>         <dbl>
+    ##    <fct> <chr>                  <dbl>         <dbl>         <dbl>
     ##  1 Mod8  #7/110/3-2              27.5          46              19
     ##  2 Mod8  #2/95/2                 28.5          44.5            20
     ##  3 Mod8  #82/4                   33.4          52.7            20

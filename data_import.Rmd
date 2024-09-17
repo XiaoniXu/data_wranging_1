@@ -28,7 +28,24 @@ litters_df =
     file = "data/FAS_litters.csv",
     na = c("NA", " ", ".")
     )
+
+litters_df = janitor::clean_names(litters_df)
+
+pull(litters_df, gd0_weight)
 ```
+
+What id we code `group` as a factor variable?
+```{r}
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    na = c("NA", " ", "."),
+    col_types = cols(
+      Group = col_factor()
+    )
+  )
+```
+
 
 
 ## Import the FAS Pups using absolute path
