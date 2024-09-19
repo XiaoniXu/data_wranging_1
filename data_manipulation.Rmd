@@ -4,7 +4,8 @@ output: github_document
 ---
 
 9/17/2024 The days are getting shorter
-9/19/2024 The sun will die
+
+9/19/2024 The sun will go down
 
 ```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
@@ -29,7 +30,37 @@ pups_df = janitor::clean_names(pups_df)
 Use 'select()' to select variables
 
 ```{r}
-select(litters_df)
+select(litters_df, group, litter_number, gd0_weight)
+```
+
+```{r}
+select(litters_df, group:gd18_weight)
+# select from one column to another
+```
+
+```{r}
+select(litters_df, -pups_survive)
+```
+
+```{r}
+select(litters_df, -(group:gd18_weight))
+```
+
+```{r}
+select(litters_df, starts_with(("gd")))
+
+select(litters_df, contains("pups"))
+```
+
+```{r}
+select(litters_df, GROUP = group)
+
+rename(litters_df, GROUP = group)
+
+select(litters_df, litter_number, gd0_weight, everything())
+
+relocate(litters_df, litter_number, gd0_weight)
+# does the same thing with 'select'
 ```
 
 
